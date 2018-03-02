@@ -6,4 +6,8 @@ package dbdatabase.index;
  * Write to Index File
  */
 public class Index {
+
+    public Index(){
+
+    }
 }

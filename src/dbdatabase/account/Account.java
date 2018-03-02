@@ -8,4 +8,11 @@ import dbdatabase.customer.Customer;
  * Write to Customer Class Account info(key)
  */
 public class Account extends Customer {
+
+    protected String accountID;
+
+    public Account(String accountID){
+
+        this.accountID = accountID;
+    }
 }

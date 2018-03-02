@@ -7,4 +7,9 @@ import dbdatabase.index.IndexCreator;
  * Uses Customer's Insert at Account Section function
  */
 public class AccountCreator extends Customer {
+
+    public AccountCreator(String customerID){
+
+        super(customerID);
+    }
 }

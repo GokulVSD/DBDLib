@@ -9,4 +9,11 @@ package dbdatabase.customer;
  * Retrieve Detail(key)
  */
 public class Customer {
+
+    protected String customerID;
+
+    public Customer(String customerID){
+
+        this.customerID = customerID;
+    }
 }
