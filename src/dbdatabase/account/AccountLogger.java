@@ -1,9 +1,9 @@
 package dbdatabase.account;
 
-public class AccountLogger extends AccountEditor {
+public class AccountLogger extends Account {
 
-    public AccountLogger(String accountID){
+    public AccountLogger(String accountNo){
 
-        super(accountID);
+        super(accountNo);
     }
 }

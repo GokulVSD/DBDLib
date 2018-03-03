@@ -9,10 +9,10 @@ import dbdatabase.customer.Customer;
  */
 public class Account extends Customer {
 
-    protected String accountID;
+    protected String accountNo;
 
-    public Account(String accountID){
+    public Account(String accountNo){
 
-        this.accountID = accountID;
+        this.accountNo = accountNo;
     }
 }

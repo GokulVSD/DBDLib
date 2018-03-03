@@ -2,8 +2,8 @@ package dbdatabase.account;
 
 public class AccountEditor extends Account {
 
-    public AccountEditor(String accountID){
+    public AccountEditor(String accountNo){
 
-        super(accountID);
+        super(accountNo);
     }
 }
