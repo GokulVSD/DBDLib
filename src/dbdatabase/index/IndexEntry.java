@@ -7,8 +7,7 @@ public class IndexEntry extends Index {
 
     public IndexEntry(String customerID)throws Exception{
         super();
-    } //calls super's constructor, then calls super's getCustomerEntry. if it returns null, then {calls super's writeCustomerEntry,
-    // then calls super's close}
+    } //calls super's constructor, then calls super's getCustomerEntry. if it returns null, then {calls super's writeCustomerEntry,then calls super's close}
 
     void addAccount(String accountNo); //adds account to entry, and sets its status to open
     void closeAccount(String accountNo);
