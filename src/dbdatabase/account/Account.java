@@ -16,4 +16,3 @@ public class Account extends Customer {
         this.accountNo = accountNo;
     }
 }
-//RANDOM CHANGES!
