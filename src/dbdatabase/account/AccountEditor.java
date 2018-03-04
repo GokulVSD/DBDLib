@@ -2,13 +2,8 @@ package dbdatabase.account;
 
 public class AccountEditor extends Account {
 
-    public AccountEditor(String accountNo)throws Exception {
+    public AccountEditor(String accountNo){
 
         super(accountNo);
     }
-    void editAccountDetail(String key,String value);
-    void appendAccountLog(String log); //calls super's appendAccountLog
-    void save(); //calls super's save
-
-
 }
