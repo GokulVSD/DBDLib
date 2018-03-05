@@ -21,11 +21,11 @@ public class Customer {
      * If not being used, tells DB class that it's going to use the file, and
      * calls readFile().
      * @param customerID: customerID for interacting with customer file.
-     * @throws Exception: if file is already open elsewhere.
+     * @throws Exception: if file is already open.
      */
     public Customer(String customerID) throws Exception {
         if(DB.isCustomerBeingUsed(customerID))
-            throw new Exception("File already open, please call object.close() or object.save() after using the object");
+            throw new Exception("DBDatabase: File already open, please call object.close() or object.save() after using the object");
         DB.useCustomer(customerID);
         readFile();
         this.customerID = customerID;

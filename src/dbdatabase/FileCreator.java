@@ -3,7 +3,7 @@ package dbdatabase;
 import java.io.File;
 import java.io.FileWriter;
 
-protected class FileCreator {
+ public class FileCreator {
 
     private String fileName;
     protected String content;
@@ -31,7 +31,7 @@ protected class FileCreator {
             fw.write(content);
             fw.close();
         } catch (Exception e){
-            //print error to system log
+            e.printStackTrace();
         }
     }
 }

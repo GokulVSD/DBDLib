@@ -7,5 +7,5 @@ public class CustomerEditor extends Customer {
         super(customerID);
     }
     void editCustomerDetail(String key,String value){}
-    void save(){} //calls super's close
+    void save(){} //calls super's close //not needed
 }

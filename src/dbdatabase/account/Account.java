@@ -15,7 +15,7 @@ public class Account extends Customer {
     String getAccountDetail(String key){return null;}
     void appendAccountLog(String log){}
     void save(){} //calls super's writeAccount, then calls super's close
-    void close(){} //calls super's close
+    public void close(){} //calls super's close //not needed
 
 
 }
