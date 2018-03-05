@@ -6,9 +6,9 @@ public class AccountEditor extends Account {
 
         super(accountNo);
     }
-    void editAccountDetail(String key,String value);
-    void appendAccountLog(String log); //calls super's appendAccountLog
-    void save(); //calls super's save
+    void editAccountDetail(String key,String value){}
+    void appendAccountLog(String log){} //calls super's appendAccountLog
+    void save(){} //calls super's save
 
 
 }

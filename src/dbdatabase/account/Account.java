@@ -7,16 +7,15 @@ public class Account extends Customer {
     protected String accountNo;
     protected String account;
 
-    public Account(String accountNo) throws Exception //gets customerID from index, and passes to super. calls super's getAccount//
-    {
-
+    public Account(String accountNo) throws Exception { //gets customerID from index, and passes to super. calls super's getAccount//
+        super(null);
         this.accountNo = accountNo;
     }
 
-    String getAccountDetail(String key);
-    void appendAccountLog(String log);
-    void save(); //calls super's writeAccount, then calls super's close
-    void close(); //calls super's close
+    String getAccountDetail(String key){return null;}
+    void appendAccountLog(String log){}
+    void save(){} //calls super's writeAccount, then calls super's close
+    void close(){} //calls super's close
 
 
 }

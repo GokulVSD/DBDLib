@@ -9,18 +9,16 @@ public class AccountCreator extends Customer {
     protected String account;
     protected String accountNo;
 
-    public AccountCreator(String customerID){
+    public AccountCreator(String customerID,String accountNo)throws Exception { //calls initStructure
 
-        super(customerID);
+        super(null);
     }
-
-    CustomerEditor(String customerID,String accountNo)throws Exception; //calls initStructure
-    void initStructure();
-    void setBalance(String balance);
-	.
-            . //method for every field
-    void setAccountType(String type);
-    void save(); //Adds entry into IndexEntry with account status, then calls super's writeAccount, then calls super's close
+    void initStructure(){}
+    void setBalance(String balance){}
+	//.
+    //. method for every field
+    void setAccountType(String type){}
+    void save(){} //Adds entry into IndexEntry with account status, then calls super's writeAccount, then calls super's close
 
 
 }

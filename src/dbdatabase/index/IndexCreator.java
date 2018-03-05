@@ -11,6 +11,6 @@ public class IndexCreator extends FileCreator {
         super("index.txt");
     }
 
-    void initIndexStructure(String customerID); //sets super's content variable with one entry as customerID with the customer status
+    void initIndexStructure(String customerID){} //sets super's content variable with one entry as customerID with the customer status
     // as deactivated=false
 }

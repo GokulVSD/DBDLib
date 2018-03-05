@@ -11,5 +11,5 @@ public class CustomerCreator extends FileCreator {
 
         super(customerID + ".txt");
     }
-    void initCustomerStructure(); //edits super's content variable
+    void initCustomerStructure(){} //edits super's content variable
 }
