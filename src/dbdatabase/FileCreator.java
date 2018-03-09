@@ -2,6 +2,7 @@ package dbdatabase;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 
  public class FileCreator {
 
@@ -30,7 +31,7 @@ import java.io.FileWriter;
             fw = new FileWriter(fd);
             fw.write(content);
             fw.close();
-        } catch (Exception e){
+        } catch (IOException e){
             e.printStackTrace();
         }
     }
