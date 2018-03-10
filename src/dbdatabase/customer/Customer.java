@@ -1,16 +1,17 @@
 package dbdatabase.customer;
 
 import dbdatabase.DB;
+import dbdatabase.FileCreator;
 
 import java.io.File;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class Customer {
+public class Customer extends FileCreator{
 
-    protected String customerID;
-    protected String details;
-    protected String accounts;
+    private String customerID;
+    private String details;
+    private String accounts;
 
     /**
      * the DB class is checked to see if the file pertaining to the customerID is
@@ -22,6 +23,7 @@ public class Customer {
      * @throws Exception: if file is already open.
      */
     public Customer(String customerID) throws Exception {
+        super(customerID + ".txt");
         if (DB.isCustomerBeingUsed(customerID))
             throw new Exception("DBDatabase: File already open, please call object.close() or object.save() after using the object");
         DB.useCustomer(customerID);
@@ -57,7 +59,7 @@ public class Customer {
         return null;
     }
 
-    public String getAccount(String accountNo){
+    protected String getAccount(String accountNo){
         StringTokenizer st = new StringTokenizer(accounts,";");
         String token;
         while(st.hasMoreTokens()){
@@ -68,7 +70,7 @@ public class Customer {
         return null;
     }
 
-    public void writeAccount(String accountNo, String account) {
+    protected void writeAccount(String accountNo, String account) {
         StringTokenizer st = new StringTokenizer(accounts,";");
         accounts = "";
         boolean accountExists = false;
@@ -87,14 +89,15 @@ public class Customer {
             accounts += token + ";";
         }
         if(!accountExists) accounts += accountNo + ":" + account + ";";
-    } //if ac exists, replaces, else adds. if account is null, removes account.
+    }
 
     public void close() {
         writeFile();
-    } //calls writeFile
+    }
 
     private void writeFile() {
-
+        super.content = details + "|" + accounts + "|";
+        super.createFile();
         DB.doneUsingCustomer(customerID);
-    } //interfaces with DB class
+    }
 }
