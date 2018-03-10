@@ -6,14 +6,6 @@ import java.io.File;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-/**
- * Customer ID
- * Reads Customer file
- * Insert at Details section(key)
- * Insert at Accounts section(key)
- * Retrieve Account info(Account No)
- * Retrieve Detail(key)
- */
 public class Customer {
 
     protected String customerID;
@@ -76,13 +68,33 @@ public class Customer {
         return null;
     }
 
-    public String writeAccount(String accountNo, String account) {
-        return null;
-    } //if ac exists, replaces, else adds. if account is null, removes account
+    public void writeAccount(String accountNo, String account) {
+        StringTokenizer st = new StringTokenizer(accounts,";");
+        accounts = "";
+        boolean accountExists = false;
+        String token;
+        while(st.hasMoreTokens()){
+            token = st.nextToken().trim();
+            if(token.substring(0,token.indexOf(":")).equals(accountNo)){
+                accountExists = true;
+                if(account == null) break;
+                token = accountNo + ":" + account;
+            }
+            accounts += token + ";";
+        }
+        while(st.hasMoreTokens()){
+            token = st.nextToken().trim();
+            accounts += token + ";";
+        }
+        if(!accountExists) accounts += accountNo + ":" + account + ";";
+    } //if ac exists, replaces, else adds. if account is null, removes account.
 
     public void close() {
+        writeFile();
     } //calls writeFile
 
     private void writeFile() {
+
+        DB.doneUsingCustomer(customerID);
     } //interfaces with DB class
 }
