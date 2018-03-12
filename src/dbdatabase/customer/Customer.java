@@ -25,7 +25,7 @@ public class Customer extends FileCreator{
     public Customer(String customerID) throws Exception {
         super(customerID + ".txt");
         if (DB.isCustomerBeingUsed(customerID))
-            throw new Exception("DBDatabase: File already open, please call object.close() or object.save() after using the object");
+            throw new Exception("DBDatabase: Customer file already open, please call object.close() or object.save() after using the object");
         DB.useCustomer(customerID);
         this.customerID = customerID;
         readFile();
@@ -39,6 +39,7 @@ public class Customer extends FileCreator{
         try {
             sc = new Scanner(file);
         } catch (Exception e){
+            DB.doneUsingCustomer(customerID);
             throw new Exception("DBDatabase: Customer file does not exist");
         }
         sc.useDelimiter("\\Z");
