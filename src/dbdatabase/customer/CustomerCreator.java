@@ -20,7 +20,8 @@ public class CustomerCreator extends FileCreator {
         }
         super.createFile();
     }
-    void initCustomerStructure(){
+
+    private void initCustomerStructure(){
         super.content = ";" + "|" + ";" + "|";
-    } //edits super's content variable
+    }
 }

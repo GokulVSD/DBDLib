@@ -12,6 +12,7 @@ import java.util.StringTokenizer;
 public class Index extends FileCreator{
 
     LinkedList<String> entries;
+
     public Index()throws Exception{
         super("index.txt");
         if(DB.isIndexBeingUsed())
@@ -21,7 +22,7 @@ public class Index extends FileCreator{
         readEntries();
     }
 
-    void readEntries()throws Exception{
+    private void readEntries()throws Exception{
         String homeDir = System.getProperty("user.home");
         String dir = homeDir + File.separator + "Documents" + File.separator + "DBDatabase";
         File file = new File(dir, "index.txt");
@@ -38,7 +39,8 @@ public class Index extends FileCreator{
         while(st.hasMoreTokens())
             entries.add(st.nextToken().trim());
     }
-    boolean isAccountOpen(String accountNo){
+
+    public boolean isAccountOpen(String accountNo){
         for(String s:entries){
             StringTokenizer st = new StringTokenizer(s,":");
             st.nextToken(); st.nextToken();
@@ -52,7 +54,8 @@ public class Index extends FileCreator{
         }
         return false;
     }
-    boolean isCustomerDeactivated(String customerID){
+
+    public boolean isCustomerDeactivated(String customerID){
         for(String s:entries){
             StringTokenizer st = new StringTokenizer(s,":");
             if(st.nextToken().equals(customerID)){
@@ -62,7 +65,8 @@ public class Index extends FileCreator{
         }
         return true;
     }
-    String[] getListOfAccounts(String customerID){
+
+    public String[] getListOfAccounts(String customerID){
         for(String s:entries){
             StringTokenizer st = new StringTokenizer(s,":");
             if(st.nextToken().equals(customerID)){
@@ -77,14 +81,16 @@ public class Index extends FileCreator{
         }
         return null;
     }
-    String getCustomerEntry(String customerID){
+
+    protected String getCustomerEntry(String customerID){
         for(String s:entries){
             StringTokenizer st = new StringTokenizer(s,":");
             if(st.nextToken().equals(customerID)) return s;
         }
         return null;
     }
-    public void writeCustomerEntry(String customerID,String entry){
+
+    protected void writeCustomerEntry(String customerID,String entry){
         for(String s:entries){
             StringTokenizer st = new StringTokenizer(s,":");
             if(st.nextToken().equals(customerID)){
@@ -95,10 +101,12 @@ public class Index extends FileCreator{
         }
         entries.add(entry);
     }
-    void close(){
+
+    public void close(){
         writeEntries();
     }
-    void writeEntries(){
+
+    private void writeEntries(){
         super.content = "";
         for(String s:entries)
             super.content += s + ",";

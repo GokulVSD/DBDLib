@@ -11,7 +11,7 @@ public class IndexCreator extends FileCreator {
         super.createFile();
     }
 
-    void initIndexStructure(String customerID){
+    private void initIndexStructure(String customerID){
         super.content = customerID + ":" + "activated" + ":" + ",";
     }
 }
