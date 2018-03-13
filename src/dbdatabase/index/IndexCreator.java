@@ -2,15 +2,16 @@ package dbdatabase.index;
 
 import dbdatabase.FileCreator;
 
+//this class has not been tested
 public class IndexCreator extends FileCreator {
 
-    public IndexCreator(String customerID)//calls super's constructor with "index.txt", calls initIndexStructure, then calls super's
-    // createFile.
-    {
-
+    public IndexCreator(String customerID){
         super("index.txt");
+        initIndexStructure(customerID);
+        super.createFile();
     }
 
-    void initIndexStructure(String customerID){} //sets super's content variable with one entry as customerID with the customer status
-    // as deactivated=false
+    void initIndexStructure(String customerID){
+        super.content = customerID + ":" + "activated" + ":" + ",";
+    }
 }

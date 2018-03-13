@@ -43,7 +43,7 @@ public class Customer extends FileCreator{
             throw new Exception("DBDatabase: Customer file does not exist");
         }
         sc.useDelimiter("\\Z");
-        String content = sc.next();
+        String content = sc.next().trim();
         StringTokenizer st = new StringTokenizer(content, "|");
         details = st.nextToken().trim();
         accounts = st.nextToken().trim();
