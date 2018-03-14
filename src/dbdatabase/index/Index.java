@@ -81,6 +81,13 @@ public class Index extends FileCreator{
         return null;
     }
 
+    public String getCustomerID(String accountNo) throws Exception{
+        for(String s:entries){
+            if(s.contains(accountNo)) return new StringTokenizer(s,":").nextToken();
+        }
+        throw new Exception("DBDatabase: Account does not exist");
+    }
+
     protected String getCustomerEntry(String customerID){
         for(String s:entries){
             StringTokenizer st = new StringTokenizer(s,":");
