@@ -8,7 +8,6 @@ import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-//this class has not been tested
 public class Index extends FileCreator{
 
     LinkedList<String> entries;

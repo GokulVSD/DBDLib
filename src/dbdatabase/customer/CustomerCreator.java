@@ -4,7 +4,6 @@ import dbdatabase.FileCreator;
 import dbdatabase.index.IndexCreator;
 import dbdatabase.index.IndexEntry;
 
-//this class hasn't been tested yet
 public class CustomerCreator extends FileCreator {
 
     public CustomerCreator(String customerID) throws Exception {
