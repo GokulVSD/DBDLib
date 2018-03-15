@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 public class Customer extends FileCreator{
 
     private String customerID;
-    private String details;
+    protected String details;
     private String accounts;
 
     /**
@@ -73,7 +73,7 @@ public class Customer extends FileCreator{
 
     protected void writeAccount(String accountNo, String account) {
         StringTokenizer st = new StringTokenizer(accounts,";");
-        accounts = "";
+        StringBuilder sb = new StringBuilder("");
         boolean accountExists = false;
         String token;
         while(st.hasMoreTokens()){
@@ -83,12 +83,15 @@ public class Customer extends FileCreator{
                 if(account == null) break;
                 token = accountNo + ":" + account;
             }
-            accounts += token + ";";
+            sb.append(token);
+            sb.append(";");
         }
         while(st.hasMoreTokens()){
             token = st.nextToken().trim();
-            accounts += token + ";";
+            sb.append(token);
+            sb.append(";");
         }
+        account = sb.toString();
         if(!accountExists) accounts += accountNo + ":" + account + ";";
     }
 

@@ -10,14 +10,14 @@ import java.util.StringTokenizer;
 
 public class Index extends FileCreator{
 
-    LinkedList<String> entries;
+    private LinkedList<String> entries;
 
     public Index()throws Exception{
         super("index.txt");
         if(DB.isIndexBeingUsed())
             throw new Exception("DBDatabase: Index file already open, please call object.close() or object.save() after using the object");
         DB.useIndex();
-        entries = new LinkedList();
+        entries = new LinkedList<>();
         readEntries();
     }
 
@@ -44,10 +44,8 @@ public class Index extends FileCreator{
             StringTokenizer st = new StringTokenizer(s,":");
             st.nextToken(); st.nextToken();
             while(st.hasMoreTokens()){
-                if(st.nextToken().equals(accountNo)){
-                    if(st.nextToken().equals("open")) return true;
-                    else return false;
-                }
+                if(st.nextToken().equals(accountNo))
+                    return st.nextToken().equals("open");
                 st.nextToken();
             }
         }
@@ -57,10 +55,8 @@ public class Index extends FileCreator{
     public boolean isCustomerDeactivated(String customerID){
         for(String s:entries){
             StringTokenizer st = new StringTokenizer(s,":");
-            if(st.nextToken().equals(customerID)){
-                if(st.nextToken().equals("deactivated")) return true;
-                else return false;
-            }
+            if(st.nextToken().equals(customerID))
+                return st.nextToken().equals("deactivated");
         }
         return true;
     }
@@ -70,7 +66,7 @@ public class Index extends FileCreator{
             StringTokenizer st = new StringTokenizer(s,":");
             if(st.nextToken().equals(customerID)){
                 st.nextToken();
-                LinkedList<String> listOfAccounts = new LinkedList();
+                LinkedList<String> listOfAccounts = new LinkedList<>();
                 while (st.hasMoreTokens()){
                     listOfAccounts.add(st.nextToken());
                     st.nextToken();
@@ -113,9 +109,12 @@ public class Index extends FileCreator{
     }
 
     private void writeEntries(){
-        super.content = "";
-        for(String s:entries)
-            super.content += s + ",";
+        StringBuilder sb = new StringBuilder("");
+        for(String s:entries) {
+            sb.append(s);
+            sb.append(",");
+        }
+        super.content = sb.toString();
         super.createFile();
         DB.doneUsingIndex();
     }
