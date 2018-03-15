@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 //this class has not been tested
 public class Account extends Customer {
 
-    protected String accountNo;
+    private String accountNo;
     protected String account;
 
     public Account(String accountNo) throws Exception {
