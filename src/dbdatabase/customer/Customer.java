@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 
 public class Customer extends FileCreator{
 
-    private String customerID;
+    protected String customerID;
     protected String details;
     private String accounts;
 
