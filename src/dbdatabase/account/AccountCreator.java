@@ -3,22 +3,34 @@ package dbdatabase.account;
 import dbdatabase.customer.Customer;
 import dbdatabase.index.Index;
 import dbdatabase.index.IndexCreator;
+import dbdatabase.index.IndexEntry;
 
+//this class has not been tested
 public class AccountCreator extends Customer {
 
-    protected String account;
-    protected String accountNo;
+    private String account;
+    private String accountNo;
 
-    public AccountCreator(String customerID,String accountNo)throws Exception { //calls initStructure
-
-        super(null);
+    public AccountCreator(String customerID,String accountNo)throws Exception {
+        super(customerID);
+        try{
+            IndexEntry iE = new IndexEntry(customerID);
+            iE.addAccount(accountNo);
+            iE.save();
+        } catch (Exception e){
+            super.close();
+            throw new Exception("DBDatabase: Can't create new account since Index file is currently being used");
+        }
+        this.accountNo = accountNo;
+        initStructure();
     }
-    void initStructure(){}
-    void setBalance(String balance){}
-	//.
-    //. method for every field
-    void setAccountType(String type){}
-    void save(){} //Adds entry into IndexEntry with account status, then calls super's writeAccount, then calls super's close
 
+    private void initStructure(){
+        account = "," + "!" + "," + "!";
+    }
 
+    void save(){
+        super.writeAccount(accountNo,account);
+        super.close();
+    }
 }

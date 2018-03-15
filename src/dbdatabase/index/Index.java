@@ -87,8 +87,12 @@ public class Index extends FileCreator{
     protected String getCustomerEntry(String customerID){
         for(String s:entries){
             StringTokenizer st = new StringTokenizer(s,":");
-            if(st.nextToken().equals(customerID)) return s;
+            if(st.nextToken().equals(customerID)){
+                close();
+                return s;
+            }
         }
+        close();
         return null;
     }
 
