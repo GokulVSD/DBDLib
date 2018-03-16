@@ -6,7 +6,6 @@ import dbdatabase.index.Index;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
-//this class has not been tested
 public class Account extends Customer {
 
     protected String accountNo;
@@ -30,6 +29,8 @@ public class Account extends Customer {
 
     public void appendAccountLog(String log){
         account = account.substring(0,account.lastIndexOf("!"));
+        if(account.charAt(account.length() - 2) == '!')
+            account = account.substring(0,account.lastIndexOf(","));
         account += log + "," + "!";
     }
 
@@ -40,6 +41,8 @@ public class Account extends Customer {
         StringTokenizer logTokens = new StringTokenizer(st.nextToken(),",");
         while (logTokens.hasMoreTokens())
             logs.add(logTokens.nextToken());
+        if(logs.isEmpty())
+            return null;
         return logs.toArray(new String[logs.size()]);
     }
 

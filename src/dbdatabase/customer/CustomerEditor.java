@@ -2,7 +2,6 @@ package dbdatabase.customer;
 
 import java.util.StringTokenizer;
 
-//this class has not been tested
 public class CustomerEditor extends Customer {
 
     public CustomerEditor(String customerID)throws Exception {
@@ -30,5 +29,10 @@ public class CustomerEditor extends Customer {
         super.details = sb.toString();
         if(doesNotExist)
             super.details += key + ":" + value + ";";
+        if(super.details.equals("")) super.details = ";";
+    }
+
+    public void save(){
+        super.close();
     }
 }

@@ -1,11 +1,8 @@
 package dbdatabase.account;
 
 import dbdatabase.customer.Customer;
-import dbdatabase.index.Index;
-import dbdatabase.index.IndexCreator;
 import dbdatabase.index.IndexEntry;
 
-//this class has not been tested
 public class AccountCreator extends Customer {
 
     private String account;
@@ -19,17 +16,20 @@ public class AccountCreator extends Customer {
             iE.save();
         } catch (Exception e){
             super.close();
+            if(e.getMessage().equals("DBDatabase: Account already exists"))
+                throw e;
             throw new Exception("DBDatabase: Can't create new account since Index file is currently being used");
         }
         this.accountNo = accountNo;
         initStructure();
+        save();
     }
 
     private void initStructure(){
         account = "," + "!" + "," + "!";
     }
 
-    void save(){
+    private void save(){
         super.writeAccount(accountNo,account);
         super.close();
     }

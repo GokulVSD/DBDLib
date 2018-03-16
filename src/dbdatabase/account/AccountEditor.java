@@ -2,7 +2,6 @@ package dbdatabase.account;
 
 import java.util.StringTokenizer;
 
-//this class hasn't been tested
 public class AccountEditor extends Account {
 
     public AccountEditor(String accountNo)throws Exception {

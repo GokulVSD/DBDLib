@@ -91,8 +91,9 @@ public class Customer extends FileCreator{
             sb.append(token);
             sb.append(";");
         }
-        account = sb.toString();
-        if(!accountExists) accounts += accountNo + ":" + account + ";";
+        accounts = sb.toString();
+        if(!accountExists && account !=null) accounts += accountNo + ":" + account + ";";
+        if(accounts.equals("")) accounts = ";";
     }
 
     public void close() {
