@@ -1,5 +1,7 @@
 package dbdatabase.index;
 
+import java.util.StringTokenizer;
+
 public class IndexEntry extends Index {
 
     private String entry;
@@ -27,14 +29,33 @@ public class IndexEntry extends Index {
     }
 
     public void closeAccount(String accountNo){
+        if(!entry.contains(accountNo))
+            return;
+        StringTokenizer st = new StringTokenizer(entry,":");
+        st.nextToken(); st.nextToken();
+        while(st.hasMoreTokens()){
+            if(st.nextToken().equals(accountNo))
+                if(st.nextToken().equals("closed"))
+                    return;
+            st.nextToken();
+        }
         int accountIndex = entry.indexOf(accountNo);
-        if(entry.contains(accountNo))
-            entry = entry.substring(0,accountIndex) + entry.substring(accountIndex).replaceFirst("open","closed");
+        entry = entry.substring(0,accountIndex) + entry.substring(accountIndex).replaceFirst("open","closed");
     }
 
     public void reopenAccount(String accountNo){
+        if(!entry.contains(accountNo))
+            return;
+        StringTokenizer st = new StringTokenizer(entry,":");
+        st.nextToken(); st.nextToken();
+        while(st.hasMoreTokens()){
+            if(st.nextToken().equals(accountNo))
+                if(st.nextToken().equals("open"))
+                    return;
+            st.nextToken();
+        }
         int accountIndex = entry.indexOf(accountNo);
-        entry = entry.substring(0,accountIndex) + entry.substring(accountIndex).replaceFirst("open","closed");
+        entry = entry.substring(0,accountIndex) + entry.substring(accountIndex).replaceFirst("closed","open");
     }
 
     public void activateCustomer(){
@@ -49,5 +70,4 @@ public class IndexEntry extends Index {
         super.writeCustomerEntry(customerID,entry);
         super.close();
     }
-
 }

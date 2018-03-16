@@ -52,6 +52,12 @@ public class Index extends FileCreator{
         return false;
     }
 
+    public boolean doesAccountExist(String accountNo){
+        for(String s:entries)
+            if(s.contains(accountNo)) return true;
+        return false;
+    }
+
     public boolean isCustomerDeactivated(String customerID){
         for(String s:entries){
             StringTokenizer st = new StringTokenizer(s,":");
@@ -59,6 +65,12 @@ public class Index extends FileCreator{
                 return st.nextToken().equals("deactivated");
         }
         return true;
+    }
+
+    public boolean doesCustomerExist(String customerID){
+        for(String s:entries)
+            if(s.contains(customerID)) return true;
+        return false;
     }
 
     public String[] getListOfAccounts(String customerID){
