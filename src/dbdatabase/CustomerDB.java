@@ -2,6 +2,8 @@ package dbdatabase;
 
 public interface CustomerDB {
 
+    public boolean getStatus();
+
     public void createNewCustomer(String customerID);
 
     public String getCustomerDetail(String customerID,String key);

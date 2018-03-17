@@ -55,6 +55,10 @@ public class DBD implements AccountDB,CustomerDB {
         return true;
     }
 
+    public boolean getStatus(){
+        return status;
+    }
+
     public void createNewCustomer(String customerID){
         while (true) {
             try {

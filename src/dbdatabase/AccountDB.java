@@ -2,6 +2,8 @@ package dbdatabase;
 
 public interface AccountDB {
 
+    public boolean getStatus();
+
     public void createNewAccount(String customerID,String accountNo);
 
     public String getAccountDetail(String accountNo,String key);
