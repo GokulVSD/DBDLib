@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.time.LocalDateTime;
 
-public class DBD {
+public class DBD implements AccountDB,CustomerDB {
 
     private File file;
     public boolean status;
