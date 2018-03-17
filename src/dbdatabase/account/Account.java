@@ -15,6 +15,10 @@ public class Account extends Customer {
         super(new Index().getCustomerID(accountNo));
         this.accountNo = accountNo;
         account = super.getAccount(accountNo);
+        if(account == null){
+            super.close();
+            throw new Exception("DBDatabase: Account does not exist");
+        }
     }
 
     public String getAccountDetail(String key){

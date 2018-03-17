@@ -38,6 +38,7 @@ public class DBD implements AccountDB,CustomerDB {
     }
 
     private boolean shouldIWait(String s){
+        if(s == null) return false;
         switch (s){
             case "DBDatabase: Index file already open, please call object.close() or object.save() after using the object":
             case "DBDatabase: Customer file already open, please call object.close() or object.save() after using the object": return true;
@@ -66,7 +67,7 @@ public class DBD implements AccountDB,CustomerDB {
                     }
                     continue;
                 }
-                appendDBDLog(e.getMessage());
+                appendDBDLog(e.getMessage()==null?e.toString():e.getMessage());
                 status = false;
                 return;
             }
@@ -93,7 +94,7 @@ public class DBD implements AccountDB,CustomerDB {
                     }
                     continue;
                 }
-                appendDBDLog(e.getMessage());
+                appendDBDLog(e.getMessage()==null?e.toString():e.getMessage());
                 status = false;
                 return null;
             }
@@ -114,7 +115,7 @@ public class DBD implements AccountDB,CustomerDB {
                     }
                     continue;
                 }
-                appendDBDLog(e.getMessage());
+                appendDBDLog(e.getMessage()==null?e.toString():e.getMessage());
                 status = false;
                 return;
             }
@@ -135,7 +136,7 @@ public class DBD implements AccountDB,CustomerDB {
                     }
                     continue;
                 }
-                appendDBDLog(e.getMessage());
+                appendDBDLog(e.getMessage()==null?e.toString():e.getMessage());
                 status = false;
                 return;
             }
@@ -162,7 +163,7 @@ public class DBD implements AccountDB,CustomerDB {
                     }
                     continue;
                 }
-                appendDBDLog(e.getMessage());
+                appendDBDLog(e.getMessage()==null?e.toString():e.getMessage());
                 status = false;
                 return null;
             }
@@ -183,7 +184,7 @@ public class DBD implements AccountDB,CustomerDB {
                     }
                     continue;
                 }
-                appendDBDLog(e.getMessage());
+                appendDBDLog(e.getMessage()==null?e.toString():e.getMessage());
                 status = false;
                 return;
             }
@@ -210,7 +211,7 @@ public class DBD implements AccountDB,CustomerDB {
                     }
                     continue;
                 }
-                appendDBDLog(e.getMessage());
+                appendDBDLog(e.getMessage()==null?e.toString():e.getMessage());
                 status = false;
                 return null;
             }
@@ -231,7 +232,7 @@ public class DBD implements AccountDB,CustomerDB {
                     }
                     continue;
                 }
-                appendDBDLog(e.getMessage());
+                appendDBDLog(e.getMessage()==null?e.toString():e.getMessage());
                 status = false;
                 return;
             }
@@ -252,7 +253,7 @@ public class DBD implements AccountDB,CustomerDB {
                     }
                     continue;
                 }
-                appendDBDLog(e.getMessage());
+                appendDBDLog(e.getMessage()==null?e.toString():e.getMessage());
                 status = false;
                 return;
             }
@@ -279,7 +280,7 @@ public class DBD implements AccountDB,CustomerDB {
                     }
                     continue;
                 }
-                appendDBDLog(e.getMessage());
+                appendDBDLog(e.getMessage()==null?e.toString():e.getMessage());
                 status = false;
                 return false;
             }
@@ -304,7 +305,7 @@ public class DBD implements AccountDB,CustomerDB {
                     }
                     continue;
                 }
-                appendDBDLog(e.getMessage());
+                appendDBDLog(e.getMessage()==null?e.toString():e.getMessage());
                 status = false;
                 return false;
             }
@@ -329,7 +330,7 @@ public class DBD implements AccountDB,CustomerDB {
                     }
                     continue;
                 }
-                appendDBDLog(e.getMessage());
+                appendDBDLog(e.getMessage()==null?e.toString():e.getMessage());
                 status = false;
                 return false;
             }
@@ -354,7 +355,7 @@ public class DBD implements AccountDB,CustomerDB {
                     }
                     continue;
                 }
-                appendDBDLog(e.getMessage());
+                appendDBDLog(e.getMessage()==null?e.toString():e.getMessage());
                 status = false;
                 return false;
             }
@@ -379,7 +380,7 @@ public class DBD implements AccountDB,CustomerDB {
                     }
                     continue;
                 }
-                appendDBDLog(e.getMessage());
+                appendDBDLog(e.getMessage()==null?e.toString():e.getMessage());
                 status = false;
                 return null;
             }
@@ -400,7 +401,7 @@ public class DBD implements AccountDB,CustomerDB {
                     }
                     continue;
                 }
-                appendDBDLog(e.getMessage());
+                appendDBDLog(e.getMessage()==null?e.toString():e.getMessage());
                 status = false;
                 return;
             }
@@ -423,7 +424,7 @@ public class DBD implements AccountDB,CustomerDB {
                     }
                     continue;
                 }
-                appendDBDLog(e.getMessage());
+                appendDBDLog(e.getMessage()==null?e.toString():e.getMessage());
                 status = false;
                 return;
             }
@@ -446,7 +447,7 @@ public class DBD implements AccountDB,CustomerDB {
                     }
                     continue;
                 }
-                appendDBDLog(e.getMessage());
+                appendDBDLog(e.getMessage()==null?e.toString():e.getMessage());
                 status = false;
                 return;
             }
@@ -469,7 +470,7 @@ public class DBD implements AccountDB,CustomerDB {
                     }
                     continue;
                 }
-                appendDBDLog(e.getMessage());
+                appendDBDLog(e.getMessage()==null?e.toString():e.getMessage());
                 status = false;
                 return;
             }
