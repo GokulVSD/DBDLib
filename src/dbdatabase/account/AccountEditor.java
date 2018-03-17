@@ -8,7 +8,7 @@ public class AccountEditor extends Account {
         super(accountNo);
     }
 
-    void editAccountDetail(String key,String value){
+    public void editAccountDetail(String key,String value){
         boolean doesNotExist=true;
         StringTokenizer st = new StringTokenizer(super.account,"!");
         StringBuilder sb = new StringBuilder("");

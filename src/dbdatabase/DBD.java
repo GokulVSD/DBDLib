@@ -2,6 +2,8 @@ package dbdatabase;
 
 import dbdatabase.account.Account;
 import dbdatabase.account.AccountCreator;
+import dbdatabase.account.AccountDeleter;
+import dbdatabase.account.AccountEditor;
 import dbdatabase.customer.Customer;
 import dbdatabase.customer.CustomerCreator;
 import dbdatabase.customer.CustomerEditor;
@@ -164,6 +166,98 @@ public class DBD {
                 status = false;
                 return null;
             }
+        }
+    }
+
+    public void appendAccountLog(String accountNo,String log) {
+        while (true) {
+            try {
+                Account a = new Account(accountNo);
+                a.appendAccountLog(log);
+                a.save();
+            } catch (Exception e) {
+                if (shouldIWait(e.getMessage())) {
+                    if (!waiting()) {
+                        status = false;
+                        return;
+                    }
+                    continue;
+                }
+                appendDBDLog(e.getMessage());
+                status = false;
+                return;
+            }
+            status = true;
+            return;
+        }
+    }
+
+    public String[] getLogs(String accountNo){
+        while (true) {
+            try {
+                String[] var;
+                Account a = new Account(accountNo);
+                var = a.getLogs();
+                a.close();
+                status = true;
+                return var;
+
+            } catch (Exception e) {
+                if (shouldIWait(e.getMessage())) {
+                    if (!waiting()) {
+                        status = false;
+                        return null;
+                    }
+                    continue;
+                }
+                appendDBDLog(e.getMessage());
+                status = false;
+                return null;
+            }
+        }
+    }
+
+    public void editAccountDetail(String accountNo,String key,String value) {
+        while (true) {
+            try {
+                AccountEditor aE = new AccountEditor(accountNo);
+                aE.editAccountDetail(key,value);
+                aE.save();
+            } catch (Exception e) {
+                if (shouldIWait(e.getMessage())) {
+                    if (!waiting()) {
+                        status = false;
+                        return;
+                    }
+                    continue;
+                }
+                appendDBDLog(e.getMessage());
+                status = false;
+                return;
+            }
+            status = true;
+            return;
+        }
+    }
+
+    public void deleteAccount(String accountNo) {
+        while (true) {
+            try {
+                new AccountDeleter(accountNo);
+            } catch (Exception e) {
+                if (shouldIWait(e.getMessage())) {
+                    if (!waiting()) {
+                        status = false;
+                        return;
+                    }
+                    continue;
+                }
+                appendDBDLog(e.getMessage());
+                status = false;
+                return;
+            }
+            status = true;
+            return;
         }
     }
 
