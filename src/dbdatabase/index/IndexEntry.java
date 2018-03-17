@@ -32,12 +32,12 @@ public class IndexEntry extends Index {
         if(!entry.contains(accountNo))
             return;
         StringTokenizer st = new StringTokenizer(entry,":");
-        st.nextToken(); st.nextToken();
+        st.nextToken();
         while(st.hasMoreTokens()){
+            st.nextToken();
             if(st.nextToken().equals(accountNo))
                 if(st.nextToken().equals("closed"))
                     return;
-            st.nextToken();
         }
         int accountIndex = entry.indexOf(accountNo);
         entry = entry.substring(0,accountIndex) + entry.substring(accountIndex).replaceFirst("open","closed");
@@ -47,12 +47,12 @@ public class IndexEntry extends Index {
         if(!entry.contains(accountNo))
             return;
         StringTokenizer st = new StringTokenizer(entry,":");
-        st.nextToken(); st.nextToken();
+        st.nextToken();
         while(st.hasMoreTokens()){
+            st.nextToken();
             if(st.nextToken().equals(accountNo))
                 if(st.nextToken().equals("open"))
                     return;
-            st.nextToken();
         }
         int accountIndex = entry.indexOf(accountNo);
         entry = entry.substring(0,accountIndex) + entry.substring(accountIndex).replaceFirst("closed","open");

@@ -83,6 +83,8 @@ public class Index extends FileCreator{
                     listOfAccounts.add(st.nextToken());
                     st.nextToken();
                 }
+                if(listOfAccounts.isEmpty())
+                    return null;
                 return listOfAccounts.toArray(new String[listOfAccounts.size()]);
             }
         }
@@ -100,16 +102,15 @@ public class Index extends FileCreator{
         throw new Exception("DBDatabase: Account does not exist");
     }
 
-    protected String getCustomerEntry(String customerID){
+    protected String getCustomerEntry(String customerID) throws Exception{
         for(String s:entries){
             StringTokenizer st = new StringTokenizer(s,":");
             if(st.nextToken().equals(customerID)){
-                close();
                 return s;
             }
         }
         close();
-        return null;
+        throw new Exception("DBDatabase: Customer does not exist");
     }
 
     protected void writeCustomerEntry(String customerID,String entry){

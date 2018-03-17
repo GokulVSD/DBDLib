@@ -1,7 +1,10 @@
 package dbdatabase;
 
+import dbdatabase.account.Account;
 import dbdatabase.account.AccountCreator;
+import dbdatabase.customer.Customer;
 import dbdatabase.customer.CustomerCreator;
+import dbdatabase.customer.CustomerEditor;
 import dbdatabase.index.Index;
 import dbdatabase.index.IndexEntry;
 
@@ -42,7 +45,7 @@ public class DBD {
 
     private boolean waiting(){
         try {
-            Thread.sleep(10);
+            Thread.sleep(200);
         } catch (Exception e){
             return false;
         }
@@ -53,6 +56,54 @@ public class DBD {
         while (true) {
             try {
                 new CustomerCreator(customerID);
+            } catch (Exception e) {
+                if(shouldIWait(e.getMessage())){
+                    if(!waiting()){
+                        status = false;
+                        return;
+                    }
+                    continue;
+                }
+                appendDBDLog(e.getMessage());
+                status = false;
+                return;
+            }
+            status = true;
+            return;
+        }
+    }
+
+    public String getCustomerDetail(String customerID,String key){
+        while (true) {
+            try {
+                String var;
+                Customer c = new Customer(customerID);
+                var = c.getCustomerDetail(key);
+                c.close();
+                status = true;
+                return var;
+
+            } catch (Exception e) {
+                if (shouldIWait(e.getMessage())) {
+                    if (!waiting()) {
+                        status = false;
+                        return null;
+                    }
+                    continue;
+                }
+                appendDBDLog(e.getMessage());
+                status = false;
+                return null;
+            }
+        }
+    }
+
+    public void editCustomerDetail(String customerID,String key,String value){
+        while (true) {
+            try {
+                CustomerEditor cE = new CustomerEditor(customerID);
+                cE.editCustomerDetail(key,value);
+                cE.save();
             } catch (Exception e) {
                 if(shouldIWait(e.getMessage())){
                     if(!waiting()){
@@ -88,6 +139,31 @@ public class DBD {
             }
             status = true;
             return;
+        }
+    }
+
+    public String getAccountDetail(String accountNo,String key){
+        while (true) {
+            try {
+                String var;
+                Account a = new Account(accountNo);
+                var = a.getAccountDetail(key);
+                a.close();
+                status = true;
+                return var;
+
+            } catch (Exception e) {
+                if (shouldIWait(e.getMessage())) {
+                    if (!waiting()) {
+                        status = false;
+                        return null;
+                    }
+                    continue;
+                }
+                appendDBDLog(e.getMessage());
+                status = false;
+                return null;
+            }
         }
     }
 
