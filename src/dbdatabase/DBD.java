@@ -40,6 +40,9 @@ public class DBD implements AccountDB,CustomerDB {
     private boolean shouldIWait(String s){
         if(s == null) return false;
         switch (s){
+            case "DBDatabase: Can't delete, Index file currently being used":
+            case "DBDatabase: Can't create new account since Index file is currently being used":
+            case "DBDatabase: Can't create new customer since Index file is currently being used":
             case "DBDatabase: Index file already open, please call object.close() or object.save() after using the object":
             case "DBDatabase: Customer file already open, please call object.close() or object.save() after using the object": return true;
         }
