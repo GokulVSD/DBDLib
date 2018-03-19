@@ -109,8 +109,7 @@ public class Index extends FileCreator{
                 return s;
             }
         }
-        close();
-        throw new Exception("DBDatabase: Customer does not exist");
+        return null;
     }
 
     protected void writeCustomerEntry(String customerID,String entry){
